@@ -1,0 +1,19 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "Recipe App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AimenFahmi98/forkify.git"
+  },
+  "author": "Aimen Fahmi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AimenFahmi98/forkify/issues"
+  },
+  "homepage": "https://github.com/AimenFahmi98/forkify#readme"
+}
