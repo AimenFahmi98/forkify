@@ -114,8 +114,40 @@ class RecipeView {
         <use href="${icons}#icon-loader"></use>
       </svg>
     </div>`;
-    parentEl.innerHTML = "";
+    this.#clear();
     parentEl.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  renderError(message) {
+    const markup = `<div class="error">
+    <div>
+      <svg>
+        <use href="${icons}#icon-alert-triangle"></use>
+      </svg>
+    </div>
+    <p>${message}</p>
+  </div>`;
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  renderMessage(message) {
+    const markup = `<div class="message">
+    <div>
+      <svg>
+        <use href="${icons}#icon-smile"></use>
+      </svg>
+    </div>
+    <p>${message}</p>
+  </div>`;
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  addRenderHandler(handler) {
+    ["hashchange", "load"].forEach((event) =>
+      window.addEventListener(event, handler)
+    );
   }
 
   #generateMarkupIngredient(ingredient) {

@@ -25,9 +25,14 @@ const controlRecipes = async function () {
     // 2) Rendering the recipe
     recipeView.render(model.state.recipe);
   } catch (error) {
-    alert(error);
+    recipeView.renderError(
+      "We could not find the recipe. Please try another one!"
+    );
   }
 };
 
-window.addEventListener("hashchange", controlRecipes);
-window.addEventListener("load", controlRecipes);
+const init = function () {
+  recipeView.addRenderHandler(controlRecipes);
+};
+
+init();
