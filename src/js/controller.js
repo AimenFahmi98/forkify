@@ -4,15 +4,6 @@ import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
 
-// For polyfilling async/await
-import "regenerator-runtime/runtime";
-// For polyfilling everything else
-import "core-js/stable";
-
-if (module.hot) {
-  module.hot.accept;
-}
-
 const controlRecipes = async function () {
   try {
     const recipeId = window.location.hash.slice(1);
@@ -81,9 +72,16 @@ const controlServings = function (btn) {
   recipeView.update(model.state.recipe);
 };
 
+const controlAddBookmark = function () {
+  if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
+  else model.deleteBookmark(model.state.recipe.id);
+  recipeView.update(model.state.recipe);
+};
+
 const init = function () {
   recipeView.addRenderHandler(controlRecipes);
   recipeView.addUpdateServingsHandler(controlServings);
+  recipeView.addBookmarkAddingHanlder(controlAddBookmark);
   searchView.addSearchHandler(controlSearchResults);
   paginationView.addClickHandler(controlPagination);
 };
